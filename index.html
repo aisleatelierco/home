@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aisle Atelier & Co. | Timeless Wedding Planning & Strategic Discretion</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ivory: '#F9F8F6',
+                        'ivory-dark': '#EBE9E1',
+                        ink: '#111111',
+                        charcoal: '#2A2A2A',
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles for Editorial Feel */
+        body {
+            background-color: #F9F8F6; /* Ivory */
+            color: #111111; /* Ink */
+            position: relative;
+        }
+        
+        /* Subtle paper texture overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.04%22/%3E%3C/svg%3E');
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Editorial Image Hover Effect */
+        .img-editorial {
+            transition: filter 0.7s ease, transform 0.7s ease;
+            filter: grayscale(20%) contrast(110%);
+        }
+        .img-editorial:hover {
+            filter: grayscale(0%) contrast(100%);
+            transform: scale(1.02);
+        }
+        
+        /* Thin elegant borders */
+        .border-editorial {
+            border: 1px solid rgba(17, 17, 17, 0.15);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-ink selection:text-ivory">
+
+    <nav class="fixed w-full top-0 z-50 bg-ivory/90 backdrop-blur-md border-b border-editorial transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 py-5 flex justify-between items-center">
+            <div class="hidden md:flex space-x-8 text-xs font-medium tracking-[0.2em] uppercase text-charcoal">
+                <a href="#philosophy" class="hover:text-ink transition-colors">Philosophy</a>
+                <a href="#services" class="hover:text-ink transition-colors">Services</a>
+            </div>
+            
+            <div class="text-center flex-grow md:flex-grow-0">
+                <a href="#" class="font-serif text-2xl md:text-3xl tracking-widest text-ink uppercase">
+                    Aisle Atelier <span class="text-lg italic lowercase font-light">&</span> Co.
+                </a>
+            </div>
+
+            <div class="hidden md:flex space-x-8 text-xs font-medium tracking-[0.2em] uppercase text-charcoal items-center">
+                <a href="#discretion" class="hover:text-ink transition-colors">Discretion</a>
+                <a href="#inquire" class="px-5 py-2 border border-ink hover:bg-ink hover:text-ivory transition-all duration-300">Inquire</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-ink focus:outline-none" id="mobile-menu-btn">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-ivory border-t border-editorial absolute w-full" id="mobile-menu">
+            <div class="flex flex-col px-6 py-4 space-y-4 text-sm tracking-widest uppercase text-center">
+                <a href="#philosophy" class="py-2 border-b border-editorial text-charcoal">Philosophy</a>
+                <a href="#services" class="py-2 border-b border-editorial text-charcoal">Services</a>
+                <a href="#discretion" class="py-2 border-b border-editorial text-charcoal">Discretion</a>
+                <a href="#inquire" class="py-2 text-ink font-semibold">Inquire</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative w-full h-[90vh] mt-16 md:mt-0 flex items-center justify-center overflow-hidden">
+        <!-- Hero Image (Using reliable Unsplash source with grayscale to match aesthetic) -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070&auto=format&fit=crop" 
+                 alt="Elegant wedding setup" 
+                 class="w-full h-full object-cover grayscale-[30%] opacity-80">
+            <div class="absolute inset-0 bg-gradient-to-t from-ivory via-ivory/40 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto fade-in-up">
+            <p class="text-xs md:text-sm font-sans tracking-[0.3em] uppercase mb-6 text-charcoal">Curators of Timeless Elegance</p>
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl leading-tight text-ink mb-6">
+                The Art of <br><span class="italic text-charcoal">Celebration</span> & <span class="italic text-charcoal">Peace</span>
+            </h1>
+            <p class="font-serif text-xl md:text-2xl text-charcoal mb-10 max-w-2xl mx-auto">
+                An exclusive planning and digital atelier for the modern couple who demands flawless execution and absolute discretion.
+            </p>
+            <a href="#inquire" class="inline-block px-10 py-4 bg-ink text-ivory text-xs font-sans tracking-[0.2em] uppercase hover:bg-charcoal transition-all duration-300">
+                Begin the Journey
+            </a>
+        </div>
+    </header>
+
+    <section id="philosophy" class="py-24 md:py-32 px-6 bg-ivory">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div class="fade-in-up order-2 md:order-1 relative p-4">
+                <div class="absolute inset-0 border border-editorial transform translate-x-4 translate-y-4"></div>
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop" 
+                     alt="Details of wedding dress" 
+                     class="w-full h-auto object-cover img-editorial relative z-10">
+            </div>
+            <div class="fade-in-up order-1 md:order-2">
+                <h2 class="text-xs font-sans tracking-[0.2em] uppercase text-charcoal mb-4 border-b border-editorial pb-2 inline-block">Our Manifesto</h2>
+                <h3 class="font-serif text-4xl md:text-5xl text-ink leading-tight mb-8">
+                    We do not simply plan events; <br>we architect your <span class="italic">peace of mind.</span>
+                </h3>
+                <div class="font-sans text-sm md:text-base text-charcoal space-y-6 leading-relaxed font-light">
+                    <p>
+                        Aisle Atelier & Co. was born from a singular truth: the most beautiful weddings are those unburdened by stress. We cater exclusively to couples navigating complex dynamics, accelerated timelines, or the desire for a flawlessly integrated digital presence.
+                    </p>
+                    <p>
+                        We operate in the shadows so you can shine in the light. From bespoke HTML digital hubs to diplomatic family mediation, our approach is defined by an old-world elegance paired with cutting-edge efficiency.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 md:py-32 px-6 bg-ivory-dark/30 border-y border-editorial">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20 fade-in-up">
+                <p class="text-xs font-sans tracking-[0.2em] uppercase text-charcoal mb-4">The Atelier Collections</p>
+                <h2 class="font-serif text-4xl md:text-5xl text-ink">Bespoke Services</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+                
+                <!-- Package 1 -->
+                <div class="group bg-ivory border border-editorial p-10 flex flex-col fade-in-up hover:-translate-y-2 transition-transform duration-500">
+                    <h3 class="font-serif text-2xl text-ink mb-2">The Tech Collection</h3>
+                    <p class="text-xs tracking-widest uppercase text-charcoal mb-6 border-b border-editorial pb-4">Digital Hub & RSVP</p>
+                    <p class="font-sans text-sm text-charcoal font-light leading-relaxed mb-8 flex-grow">
+                        For the tech-forward couple. We hand-code a bespoke HTML website serving as your personalized digital invitation, automated RSVP tracker, and integrated registry. Elegance meets modern convenience.
+                    </p>
+                    <ul class="font-sans text-xs text-charcoal space-y-3 mb-8">
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-ink mr-3"></span> Custom Domain Setup</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-ink mr-3"></span> Automated Guest Tracking</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-ink mr-3"></span> Seamless Registry Integration</li>
+                    </ul>
+                </div>
+
+                <!-- Package 2 (Highlighted) -->
+                <div class="group bg-ink text-ivory p-10 flex flex-col fade-in-up transform md:-translate-y-4 shadow-2xl">
+                    <h3 class="font-serif text-2xl mb-2">The Peace of Mind</h3>
+                    <p class="text-xs tracking-widest uppercase text-ivory/70 mb-6 border-b border-ivory/20 pb-4">Digital + Strategic Discretion</p>
+                    <p class="font-sans text-sm text-ivory/80 font-light leading-relaxed mb-8 flex-grow">
+                        Our signature offering. Includes the full Tech Collection, elevated by our Guest Management service. We handle scenario planning, guest mediation, and seamless on-the-day control.
+                    </p>
+                    <ul class="font-sans text-xs text-ivory/80 space-y-3 mb-8">
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-ivory mr-3"></span> Custom Web Experience</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-ivory mr-3"></span> Guest Coordinator</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-ivory mr-3"></span> Stakeholder Engagement</li>
+                    </ul>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="group bg-ivory border border-editorial p-10 flex flex-col fade-in-up hover:-translate-y-2 transition-transform duration-500">
+                    <h3 class="font-serif text-2xl text-ink mb-2">The S.O.S Protocol</h3>
+                    <p class="text-xs tracking-widest uppercase text-charcoal mb-6 border-b border-editorial pb-4">Rapid-Response Planning</p>
+                    <p class="font-sans text-sm text-charcoal font-light leading-relaxed mb-8 flex-grow">
+                        Designed for highly accelerated timelines. We deploy our vetted network to rapidly source luxury venues, MUAs, and vendors, managing the entirety of the event alongside our Tech and Peace of Mind services.
+                    </p>
+                    <ul class="font-sans text-xs text-charcoal space-y-3 mb-8">
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-ink mr-3"></span> Expedited Vendor Procurement</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-ink mr-3"></span> Contract Negotiation</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-ink mr-3"></span> Full End-to-End Execution</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="discretion" class="py-24 md:py-32 px-6 bg-ink text-ivory relative overflow-hidden">
+        <!-- Abstract shape/texture -->
+        <div class="absolute top-0 right-0 w-1/2 h-full opacity-10 bg-[url('https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center mix-blend-overlay"></div>
+        
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
+            <div class="fade-in-up">
+                <h2 class="font-serif text-5xl md:text-6xl mb-6">
+                    Strategic <br><span class="italic text-ivory/70">Discretion.</span>
+                </h2>
+                <p class="text-xs font-sans tracking-[0.2em] uppercase text-ivory/60 mb-8 border-b border-ivory/20 pb-4 inline-block">The Art of Guest Management</p>
+                <div class="font-sans text-sm md:text-base text-ivory/80 space-y-6 font-light leading-relaxed">
+                    <p>
+                        Planning a wedding are complex. Your wedding day should not be. Aisle Atelier & Co. pioneers the concept of elevated Guest Management. We act as your stakeholder consultant and event coordinator to ensure your dream wedding comes true with every individuals you love being part of the journey. We ensure any good or difficult unique situations of your event are handle with such grace that your guests remain entirely unaware.
+                    </p>
+                    <p>
+                        From meticulously architected seating charts that create invisible physical barriers, to strict timeline enforcement preventing unsanctioned microphone access—we anticipate every variable.
+                    </p>
+                    <p class="italic font-serif text-xl text-ivory mt-4">
+                        "We have the difficult conversations, so you only experience the joy."
+                    </p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4 fade-in-up">
+                <div class="space-y-4 mt-8">
+                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=2070&auto=format&fit=crop" alt="Elegant detail" class="w-full h-48 object-cover grayscale opacity-80 border border-ivory/20">
+                    <div class="p-6 bg-ivory/5 border border-ivory/20">
+                        <h4 class="font-serif text-lg mb-2">Vetted Bouncers</h4>
+                        <p class="font-sans text-xs font-light text-ivory/60">Invisible security dressed as luxury coordinators.</p>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="p-6 bg-ivory border border-ink text-ink">
+                        <h4 class="font-serif text-lg mb-2">Scenario Mapping</h4>
+                        <p class="font-sans text-xs font-light text-charcoal">Pre-event mitigation and dynamic responses.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=2070&auto=format&fit=crop" alt="Wedding table setup" class="w-full h-64 object-cover grayscale opacity-80 border border-ivory/20">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 md:py-32 px-6 bg-ivory">
+        <div class="max-w-5xl mx-auto text-center fade-in-up">
+            <h2 class="font-serif text-4xl md:text-5xl text-ink mb-6">The Digital Invitation, <span class="italic">Reimagined.</span></h2>
+            <p class="font-sans text-sm text-charcoal max-w-2xl mx-auto font-light leading-relaxed mb-12">
+                Paper is tradition, but digital is the future. We custom-code striking HTML hubs tailored to your aesthetic. Guests effortlessly access itineraries, RSVP with specific dietary needs, and navigate directly to your curated registries. 
+            </p>
+            <img src="https://images.unsplash.com/photo-1586704253161-599146f363c4?q=80&w=2070&auto=format&fit=crop" alt="Minimalist design workspace" class="w-full h-[400px] object-cover border border-editorial img-editorial mx-auto shadow-sm">
+        </div>
+    </section>
+
+    <section id="inquire" class="py-24 px-6 bg-ivory-dark/40 border-t border-editorial">
+        <div class="max-w-3xl mx-auto fade-in-up bg-ivory p-8 md:p-16 border border-editorial shadow-sm relative">
+            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-ivory px-4">
+                <svg class="w-8 h-8 text-ink" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0l-1.14-.76"></path></svg>
+            </div>
+            
+            <div class="text-center mb-10">
+                <h2 class="font-serif text-3xl md:text-4xl text-ink mb-2">Request a Consultation</h2>
+                <p class="font-sans text-xs tracking-widest uppercase text-charcoal">Strictly Confidential</p>
+            </div>
+
+            <form id="contactForm" class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block font-sans text-xs tracking-widest uppercase text-charcoal mb-2">Names</label>
+                        <input type="text" required class="w-full bg-transparent border-b border-editorial py-2 focus:outline-none focus:border-ink transition-colors font-serif text-lg">
+                    </div>
+                    <div>
+                        <label class="block font-sans text-xs tracking-widest uppercase text-charcoal mb-2">Event Date</label>
+                        <input type="text" placeholder="Approximate or Exact" class="w-full bg-transparent border-b border-editorial py-2 focus:outline-none focus:border-ink transition-colors font-serif text-lg">
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block font-sans text-xs tracking-widest uppercase text-charcoal mb-2">Area of Interest</label>
+                    <select class="w-full bg-transparent border-b border-editorial py-2 focus:outline-none focus:border-ink transition-colors font-serif text-lg appearance-none rounded-none">
+                        <option value="tech">The Tech Collection (Digital Hub Only)</option>
+                        <option value="peace">The Peace of Mind (Digital + Drama Management)</option>
+                        <option value="sos">The S.O.S Protocol (Last Minute Execution)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block font-sans text-xs tracking-widest uppercase text-charcoal mb-2">A Brief Note</label>
+                    <textarea rows="4" placeholder="Share your vision, or the dynamics you need navigated..." class="w-full bg-transparent border-b border-editorial py-2 focus:outline-none focus:border-ink transition-colors font-serif text-lg resize-none"></textarea>
+                </div>
+
+                <div class="text-center pt-6">
+                    <button type="submit" class="px-12 py-4 bg-ink text-ivory text-xs font-sans tracking-[0.2em] uppercase hover:bg-charcoal transition-all duration-300">
+                        Submit Inquiry
+                    </button>
+                </div>
+                <div id="formMessage" class="hidden text-center mt-4 font-serif text-lg italic text-ink">
+                    Thank you. A consultant will reach out to you discreetly.
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-ivory pt-20 pb-10 px-6 border-t border-editorial text-center">
+        <div class="max-w-4xl mx-auto flex flex-col items-center">
+            <h2 class="font-serif text-3xl tracking-widest text-ink uppercase mb-8">
+                Aisle Atelier <span class="text-xl italic lowercase font-light">&</span> Co.
+            </h2>
+            
+            <div class="flex space-x-6 mb-12 text-xs font-sans tracking-[0.2em] uppercase text-charcoal">
+                <a href="#" class="hover:text-ink transition-colors">Instagram</a>
+                <a href="#" class="hover:text-ink transition-colors">TikTok</a>
+                <a href="#" class="hover:text-ink transition-colors">Pinterest</a>
+            </div>
+
+            <p class="font-sans text-xs text-charcoal/50">
+                &copy; 2026 Aisle Atelier & Co. All rights reserved. <br>
+                Timeless Design. Absolute Discretion.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Mobile Menu Toggle
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu on link click
+            const mobileLinks = menu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                });
+            });
+
+            // Intersection Observer for scroll animations (fade-in-up)
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Run once
+                    }
+                });
+            }, observerOptions);
+
+            const fadeElements = document.querySelectorAll('.fade-in-up');
+            fadeElements.forEach(el => observer.observe(el));
+
+            // Navbar background opacity on scroll
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('shadow-sm');
+                } else {
+                    navbar.classList.remove('shadow-sm');
+                }
+            });
+
+            // Form submission simulation
+            const form = document.getElementById('contactForm');
+            const formMessage = document.getElementById('formMessage');
+            
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const btn = form.querySelector('button[type="submit"]');
+                btn.innerHTML = 'Sending...';
+                btn.classList.add('opacity-50');
+                
+                // Simulate network request
+                setTimeout(() => {
+                    btn.style.display = 'none';
+                    formMessage.classList.remove('hidden');
+                }, 1500);
+            });
+        });
+    </script>
+</body>
+</html>
